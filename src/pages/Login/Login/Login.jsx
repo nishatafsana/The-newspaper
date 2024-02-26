@@ -1,54 +1,74 @@
 import React from 'react';
-import { Button, Card, Container } from 'react-bootstrap';
-import { Form, Link } from 'react-router-dom';
-
-
+import { useContext } from 'react';
+import { Button, Container, Form } from 'react-bootstrap';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import reander from "../../../../public/Animation - 1708870018817.json"
+import { AuthContext } from '../../../providers/AuthProvider';
 
 
 const Login = () => {
-    return (
-        <Container className='mx-auto text-center mt-5  w-50 py-5'>
-         
-       {/*  */}
-       <div>
-      <div className="container">
-        <div className="row d-flex justify-content-center align-items-center">
-          <div className="col-md-6 ">
-            <div className="border w-100 m-auto text-center p-5">
-            <h4>Login your account</h4>
-              <form action="">
-                <input
-                  className="email p-3 m-2"
-                  type="email"
-                  placeholder="enter your email"
-                />
-                <input
-                  className="password p-3 m-2"
-                  type="password"
-                  placeholder="enter your password"
-                />
-                <button className="btn btn-info w-75 p-2 mt-3">Login</button>
-                <p className="p-2">
-                  <small className="text-info">
-                    are you new? <Link to='/register'>Register</Link>
-                  </small>
-                </p>
-              </form>
-            </div>
-          </div>
-          <div className="col-md-6">
-            <img
-              className="w-100"
-              src="https://i.ibb.co/hYJTmVX/undraw-Mobile-login-re-9ntv-1.png"
-              alt=""
-            />
-          
-          </div>
-        </div>
-      </div>
+    const {signIn}=useContext(AuthContext)
+    const navigate=useNavigate()
+    const location = useLocation();
+    console.log('login page location', location);
+    const from = location.state?.from?.pathname || '/category/0'
+
+
+    const handleLogin =event=>{
+        event.preventDefault();
+        const form = event.target;
+        const email = form.email.value;
+        const password = form.password.value;
+        console.log(email, password);
+        signIn(email, password)
+        .then(result => {
+            const loggedUser = result.user;
+            console.log(loggedUser);
+            navigate(from, { replace: true })
+            
+            
+        })
+        .catch(error => {
+            console.log(error);
+        })
+
+    }
+  return (
+    <div> 
+      <Container className='w-25 mx-auto mt-5'>
+    <h3 className='mt-5 text-center mb-5'><u>Please Login</u></h3>
+    <Form onSubmit={handleLogin} className='mt-5'>
+        <Form.Group className="mb-3" controlId="formBasicEmail">
+            <Form.Label>Email address</Form.Label>
+            <Form.Control type="email" name='email' placeholder="Enter email" required />
+        </Form.Group>
+
+        <Form.Group className="mb-3" controlId="formBasicPassword">
+            <Form.Label>Password</Form.Label>
+            <Form.Control type="password" name='password' placeholder="Password" required />
+        </Form.Group>
+
+        <Form.Group className="mb-3" controlId="formBasicCheckbox">
+            <Form.Check type="checkbox" label="Check me out" />
+        </Form.Group>
+        <Button variant="primary" type="submit">
+            Login
+        </Button>
+        <br />
+        <Form.Text className="text-secondary">
+            Don't Have an Account? <Link to="/register">Register</Link>
+        </Form.Text>
+        <Form.Text className="text-success">
+
+        </Form.Text>
+        <Form.Text className="text-danger">
+
+        </Form.Text>
+    </Form>
+</Container>
+      
     </div>
-        </Container>
-    );
+  );
 };
 
 export default Login;

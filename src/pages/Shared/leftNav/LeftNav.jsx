@@ -14,8 +14,8 @@ const LeftNav = () => {
         .then(data => setCategories(data));
     }, [])
     return (
-        <div>
-            <h2>All category</h2>
+        <div className='mt-5'>
+            <h2><u>All category</u></h2>
            <div>
            {
                 categories.map(category => <p key={category.id}>
@@ -30,11 +30,9 @@ const LeftNav = () => {
     <Card>
       <Card.Img variant="top" src={first} />
       <Card.Body>
-        <Card.Title>Bayern Slams Authorities Over Flight Delay to Club World Cup</Card.Title>
+        <Card.Title>Child education</Card.Title>
         <Card.Text>
-          This is a longer card with supporting text below as a natural
-          lead-in to additional content. This content is a little bit
-          longer.
+        The period from birth to eight years old is one of remarkable brain development for children and represents a crucial window of opportunity for education. UNESCO believes early childhood care and education (ECCE) that is truly inclusive is much more than just preparation for primary school.
         </Card.Text>
       </Card.Body>
     </Card>
@@ -43,11 +41,9 @@ const LeftNav = () => {
     <Card>
       <Card.Img variant="top" src={second} />
       <Card.Body>
-        <Card.Title>Bayern Slams Authorities Over Flight Delay to Club World Cup</Card.Title>
+        <Card.Title>Media and entertainment</Card.Title>
         <Card.Text>
-          This is a longer card with supporting text below as a natural
-          lead-in to additional content. This content is a little bit
-          longer.
+        This is an evolving form of art that is created using new techniques like interactivity, projection-mapping, immersive technologies, robotics, graphics, video games, animation, various 3-D technologies, physical computing, augmented and virtual reality, and the possibilities are immense.
         </Card.Text>
       </Card.Body>
     </Card>
@@ -56,11 +52,9 @@ const LeftNav = () => {
     <Card>
       <Card.Img variant="top" src={third} />
       <Card.Body>
-        <Card.Title>Bayern Slams Authorities Over Flight Delay to Club World Cup</Card.Title>
+        <Card.Title>Sports</Card.Title>
         <Card.Text>
-          This is a longer card with supporting text below as a natural
-          lead-in to additional content. This content is a little bit
-          longer.
+        The Sher-e-Bangla National Cricket Stadium (SBNCS; Bengali: শের-ই-বাংলা জাতীয় ক্রিকেট স্টেডিয়াম), also called Mirpur Stadium, is an International cricket ground at Mirpur, in Dhaka, the capital of Bangladesh. Located 10 kilometres from Mirpur city centre, the ground holds approximately 25,000 people and is named after the Bengali statesman A. K. Fazlul Huq, who was accorded the title Sher-e-Bangla ("Tiger of Bengal").
         </Card.Text>
       </Card.Body>
     </Card>
